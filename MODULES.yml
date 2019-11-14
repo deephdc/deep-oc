@@ -1,0 +1,14 @@
+---
+- module: https://github.com/deephdc/DEEP-OC-dogs_breed_det
+- module: https://github.com/deephdc/DEEP-OC-mods
+- module: https://github.com/deephdc/DEEP-OC-retinopathy_test
+- module: https://github.com/deephdc/DEEP-OC-image-classification-tf
+- module: https://github.com/deephdc/DEEP-OC-plants-classification-tf
+- module: https://github.com/deephdc/DEEP-OC-conus-classification-tf
+- module: https://github.com/deephdc/DEEP-OC-phytoplankton-classification-tf
+- module: https://github.com/deephdc/DEEP-OC-seeds-classification-tf
+- module: https://github.com/deephdc/DEEP-OC-satsr 
+- module: https://github.com/deephdc/DEEP-OC-speech-to-text-tf
+- module: https://github.com/deephdc/DEEP-OC-posenet-tf
+- module: https://github.com/deephdc/DEEP-OC-audio-classification-tf
+- module: https://github.com/deephdc/DEEP-OC-semseg_vaihingen

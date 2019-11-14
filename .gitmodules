@@ -1,51 +1,39 @@
 [submodule "DEEP-OC-dogs_breed_det"]
 	path = DEEP-OC-dogs_breed_det
 	url = https://github.com/deephdc/DEEP-OC-dogs_breed_det
-
 [submodule "DEEP-OC-mods"]
 	path = DEEP-OC-mods
 	url = https://github.com/deephdc/DEEP-OC-mods
-
 [submodule "DEEP-OC-retinopathy_test"]
 	path = DEEP-OC-retinopathy_test
 	url = https://github.com/deephdc/DEEP-OC-retinopathy_test
-
 [submodule "DEEP-OC-image-classification-tf"]
 	path = DEEP-OC-image-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-image-classification-tf
-
 [submodule "DEEP-OC-plants-classification-tf"]
 	path = DEEP-OC-plants-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-plants-classification-tf
-
 [submodule "DEEP-OC-conus-classification-tf"]
 	path = DEEP-OC-conus-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-conus-classification-tf
-
 [submodule "DEEP-OC-phytoplankton-classification-tf"]
 	path = DEEP-OC-phytoplankton-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-phytoplankton-classification-tf
-
 [submodule "DEEP-OC-seeds-classification-tf"]
 	path = DEEP-OC-seeds-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-seeds-classification-tf
-
 [submodule "DEEP-OC-satsr "]
     path = DEEP-OC-satsr
     url = https://github.com/deephdc/DEEP-OC-satsr
-
 [submodule "DEEP-OC-speech-to-text-tf"]
 	path = DEEP-OC-speech-to-text-tf
 	url = https://github.com/deephdc/DEEP-OC-speech-to-text-tf
-
 [submodule "DEEP-OC-posenet-tf"]
 	path = DEEP-OC-posenet-tf
 	url = https://github.com/deephdc/DEEP-OC-posenet-tf
-
 [submodule "DEEP-OC-audio-classification-tf"]
 	path = DEEP-OC-audio-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-audio-classification-tf
-
 [submodule "DEEP-OC-semseg_vaihingen"]
 	path = DEEP-OC-semseg_vaihingen
 	url = https://github.com/deephdc/DEEP-OC-semseg_vaihingen

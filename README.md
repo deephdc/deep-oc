@@ -11,9 +11,11 @@ get more information about them (downloading, building, executing, etc.).
 
 # Adding a module to the marketplace
 
-Edit the `MODULES` file and include it as follows:
+Edit the MODULES.yml file and include it as follows:
 
-    [submodule "whatever"]
-        path = DEEP-OC-whatever
-        url = https://github.com/deephdc/DEEP-OC-whatever.git
+    (...)
+    - module: https://github.com/deephdc/DEEP-OC-whatever
 
+Once added, submit a pull request to this repo.
+
+You can also make it [online on GitHub](https://github.com/deephdc/deep-oc/edit/master/MODULES.yml).
