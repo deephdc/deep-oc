@@ -37,3 +37,6 @@
 [submodule "DEEP-OC-semseg_vaihingen"]
 	path = DEEP-OC-semseg_vaihingen
 	url = https://github.com/deephdc/DEEP-OC-semseg_vaihingen
+[submodule "DEEP-OC-satsr"]
+	path = DEEP-OC-satsr
+	url = https://github.com/deephdc/DEEP-OC-satsr
