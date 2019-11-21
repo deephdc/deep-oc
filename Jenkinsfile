@@ -77,6 +77,7 @@ void alignModules() {
             }
         }
     }
+    echo ">>> DEEP MODULES (to add): $modules_deep_add"
     if (modules_deep_add) {
         modules_deep_add_str = modules_deep_add.join(', ')
         sh 'git commit -m "Add submodules: $modules_deep_add_str"'
