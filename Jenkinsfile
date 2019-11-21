@@ -89,5 +89,8 @@ void alignModules() {
     }
     
     // Push changes
-    sh 'git push origin HEAD:master'
+    any_commit = modules_git_del || modules_deep_add
+    if (any_commit) {
+        sh 'git push origin HEAD:master'
+    }
 }
