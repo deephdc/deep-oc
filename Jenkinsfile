@@ -89,6 +89,5 @@ void alignModules() {
     }
     
     // Push changes
-    sh 'git status'
     sh 'git push origin HEAD:master'
 }
