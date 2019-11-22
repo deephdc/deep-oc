@@ -16,6 +16,9 @@ pipeline {
         }
         
         stage('Align Git submodules with DEEP modules') {
+            when {
+                branch 'master'
+            }
             steps {
                 withCredentials([string(
                         credentialsId: "indigobot-github-token",
@@ -24,6 +27,21 @@ pipeline {
                     sh 'git config user.name "indigobot"'
                     sh 'git config user.email "<>"'
                     alignModules()
+                }
+            }
+        }
+
+        stage('Trigger DEEP marketplace build') {
+            when {
+                allOf {
+                    branch 'master'
+                    changeset '.gitmodules'
+                }
+            }
+            steps {
+                script {
+                    def job_result = JenkinsBuildJob("Pipeline-as-code/deephdc.github.io/pelican")
+                    job_result_url = job_result.absoluteUrl
                 }
             }
         }
