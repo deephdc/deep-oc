@@ -22,9 +22,9 @@
 [submodule "DEEP-OC-seeds-classification-tf"]
 	path = DEEP-OC-seeds-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-seeds-classification-tf
-[submodule "DEEP-OC-satsr "]
-    path = DEEP-OC-satsr
-    url = https://github.com/deephdc/DEEP-OC-satsr
+[submodule "DEEP-OC-satsr"]
+    	path = DEEP-OC-satsr
+    	url = https://github.com/deephdc/DEEP-OC-satsr
 [submodule "DEEP-OC-speech-to-text-tf"]
 	path = DEEP-OC-speech-to-text-tf
 	url = https://github.com/deephdc/DEEP-OC-speech-to-text-tf
@@ -37,6 +37,3 @@
 [submodule "DEEP-OC-semseg_vaihingen"]
 	path = DEEP-OC-semseg_vaihingen
 	url = https://github.com/deephdc/DEEP-OC-semseg_vaihingen
-[submodule "DEEP-OC-satsr"]
-	path = DEEP-OC-satsr
-	url = https://github.com/deephdc/DEEP-OC-satsr
