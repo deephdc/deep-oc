@@ -92,9 +92,7 @@ void alignModules() {
     modules_deep_add = []
     any_add_failure = false
     modules_deep_map.each {
-        if (fileExists(it.key)) {
-
-        else {
+        if (!fileExists(it.key)) {
             try {
                 sh "git submodule add $it.value"
                 modules_deep_add.add(it.key)
