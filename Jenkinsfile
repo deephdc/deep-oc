@@ -84,7 +84,7 @@ void alignModules() {
     // Update git submodules to the last version
     sh 'git pull --recurse-submodules'
     sh 'git submodule update --remote --recursive'
-    sh 'git commit -m "Update submodules"'
+    sh 'git commit -m "Update submodules"|true'
     
     // Add missing modules from MODULES.yml
     modules_deep_add = []
