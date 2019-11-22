@@ -98,7 +98,7 @@ void alignModules() {
     sh 'git submodule update --remote --recursive'
     modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
     if (modules_git_update) {
-    	sh 'git commit -m "Update submodules"'
+    	sh 'git commit -a -m "Update submodules"'
     }
     
     // Add missing modules from MODULES.yml
