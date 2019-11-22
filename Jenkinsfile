@@ -5,7 +5,9 @@
 
 pipeline {
     agent {
-        label 'python'
+        docker {
+            image 'alpine/git'
+        }
     }
     
     stages {
