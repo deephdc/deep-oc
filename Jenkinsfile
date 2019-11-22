@@ -96,7 +96,10 @@ void alignModules() {
     // Update git submodules to the last version
     sh 'git pull --recurse-submodules'
     sh 'git submodule update --remote --recursive'
-    sh 'git commit -m "Update submodules"|true'
+    modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
+    if (modules_git_update) {
+    	sh 'git commit -m "Update submodules"'
+    }
     
     // Add missing modules from MODULES.yml
     modules_deep_add = []
@@ -125,7 +128,7 @@ void alignModules() {
     }
     
     // Push changes
-    any_commit = modules_git_del || modules_deep_add
+    any_commit = modules_git_del || modules_git_update || modules_deep_add
     if (any_commit) {
         sh 'git push origin HEAD:master'
     }
