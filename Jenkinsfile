@@ -5,7 +5,9 @@
 
 pipeline {
     agent {
-        label 'python'
+        docker {
+            image 'alpine/git'
+        }
     }
     
     stages {
@@ -16,6 +18,9 @@ pipeline {
         }
         
         stage('Align Git submodules with DEEP modules') {
+            when {
+                branch 'master'
+            }
             steps {
                 withCredentials([string(
                         credentialsId: "indigobot-github-token",
@@ -24,6 +29,21 @@ pipeline {
                     sh 'git config user.name "indigobot"'
                     sh 'git config user.email "<>"'
                     alignModules()
+                }
+            }
+        }
+
+        stage('Trigger DEEP marketplace build') {
+            when {
+                allOf {
+                    branch 'master'
+                    changeset '.gitmodules'
+                }
+            }
+            steps {
+                script {
+                    def job_result = JenkinsBuildJob("Pipeline-as-code/deephdc.github.io/pelican")
+                    job_result_url = job_result.absoluteUrl
                 }
             }
         }
@@ -62,12 +82,19 @@ void alignModules() {
     modules_git_del.each {
         sh(script: "bash tools/remove-module.sh ${it}")
     }
+
+    // Update git submodules to the last version
+    sh 'git pull --recurse-submodules'
+    sh 'git submodule update --remote --recursive'
+    sh 'git commit -m "Update submodules"'
     
     // Add missing modules from MODULES.yml
     modules_deep_add = []
     any_add_failure = false
     modules_deep_map.each {
-        if (!fileExists(it.key)) {
+        if (fileExists(it.key)) {
+
+        else {
             try {
                 sh "git submodule add $it.value"
                 modules_deep_add.add(it.key)
@@ -77,6 +104,7 @@ void alignModules() {
             }
         }
     }
+    echo ">>> DEEP MODULES (to add): $modules_deep_add"
     if (modules_deep_add) {
         modules_deep_add_str = modules_deep_add.join(', ')
         sh 'git commit -m "Add submodules: $modules_deep_add_str"'
@@ -89,6 +117,8 @@ void alignModules() {
     }
     
     // Push changes
-    sh 'git status'
-    sh 'git push origin HEAD:master'
+    any_commit = modules_git_del || modules_deep_add
+    if (any_commit) {
+        sh 'git push origin HEAD:master'
+    }
 }
