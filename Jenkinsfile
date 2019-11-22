@@ -62,12 +62,19 @@ void alignModules() {
     modules_git_del.each {
         sh(script: "bash tools/remove-module.sh ${it}")
     }
+
+    // Update git submodules to the last version
+    sh 'git pull --recurse-submodules'
+    sh 'git submodule update --remote --recursive'
+    sh 'git commit -m "Update submodules"'
     
     // Add missing modules from MODULES.yml
     modules_deep_add = []
     any_add_failure = false
     modules_deep_map.each {
-        if (!fileExists(it.key)) {
+        if (fileExists(it.key)) {
+
+        else {
             try {
                 sh "git submodule add $it.value"
                 modules_deep_add.add(it.key)
