@@ -2,6 +2,7 @@
 
 @Library(['github.com/indigo-dc/jenkins-pipeline-library@1.3.6']) _
 
+def deep_oc_build = false
 
 pipeline {
     agent {
@@ -38,7 +39,7 @@ pipeline {
                     sh 'git remote set-url origin "https://indigobot:${GITHUB_TOKEN}@github.com/deephdc/deep-oc"'
                     sh 'git config user.name "indigobot"'
                     sh 'git config user.email "<>"'
-                    alignModules()
+                    script { deep_oc_build = alignModules() }
                 }
             }
         }
@@ -47,7 +48,7 @@ pipeline {
             when {
                 allOf {
                     branch 'master'
-                    changeset '.gitmodules'
+                    expression { return deep_oc_build }
                 }
             }
             steps {
@@ -62,7 +63,7 @@ pipeline {
 
 
 /* methods */
-void alignModules() {
+boolean alignModules() {
     def modules_deep_map = [:]
     
     // Get list of DEEP modules 
@@ -131,4 +132,6 @@ void alignModules() {
     if (any_commit) {
         sh 'git push origin HEAD:master'
     }
+
+    return any_commit
 }
