@@ -12,3 +12,4 @@
 - module: https://github.com/deephdc/DEEP-OC-posenet-tf
 - module: https://github.com/deephdc/DEEP-OC-audio-classification-tf
 - module: https://github.com/deephdc/DEEP-OC-semseg_vaihingen
+- module: https://github.com/deephdc/DEEP-OC-generic-dev
