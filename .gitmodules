@@ -37,3 +37,6 @@
 [submodule "DEEP-OC-semseg_vaihingen"]
 	path = DEEP-OC-semseg_vaihingen
 	url = https://github.com/deephdc/DEEP-OC-semseg_vaihingen
+[submodule "DEEP-OC-generic-dev"]
+	path = DEEP-OC-generic-dev
+	url = https://github.com/deephdc/DEEP-OC-generic-dev
