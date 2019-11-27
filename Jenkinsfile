@@ -98,7 +98,7 @@ void alignModules() {
     sh 'git submodule update --remote --recursive'
     modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
     if (modules_git_update) {
-    	sh 'git commit -a -m "Update submodules"'
+    	sh 'git commit -a -m "Submodules updated"'
     }
     
     // Add missing modules from MODULES.yml
@@ -117,8 +117,7 @@ void alignModules() {
     }
     echo ">>> DEEP MODULES (to add): $modules_deep_add"
     if (modules_deep_add) {
-        modules_deep_add_str = modules_deep_add.join(', ')
-        sh 'git commit -m "Add submodules: $modules_deep_add_str"'
+        sh "git commit -m \"Submodule/s added: $modules_deep_add\""
     }
     
     // Unstable build if there was any failure adding modules
