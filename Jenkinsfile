@@ -8,6 +8,14 @@ pipeline {
     agent {
         label 'python'
     }
+
+    parameters {
+        booleanParam(
+            name: 'disable_oc_build',
+            defaultValue: false,
+            description: 'Force-disable build of the DEEP marketplace'
+        )
+    }
     
     stages {
         stage('Fetch repository') {
@@ -49,6 +57,7 @@ pipeline {
                 allOf {
                     branch 'master'
                     expression { return deep_oc_build }
+                    not { expression { return params.disable_oc_build } }
                 }
             }
             steps {
