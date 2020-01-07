@@ -40,3 +40,6 @@
 [submodule "DEEP-OC-generic-dev"]
 	path = DEEP-OC-generic-dev
 	url = https://github.com/deephdc/DEEP-OC-generic-dev
+[submodule "DEEP-OC-benchmarks_cnn"]
+	path = DEEP-OC-benchmarks_cnn
+	url = https://github.com/deephdc/DEEP-OC-benchmarks_cnn
