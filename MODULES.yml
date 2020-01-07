@@ -13,3 +13,4 @@
 - module: https://github.com/deephdc/DEEP-OC-audio-classification-tf
 - module: https://github.com/deephdc/DEEP-OC-semseg_vaihingen
 - module: https://github.com/deephdc/DEEP-OC-generic-dev
+- module: https://github.com/deephdc/DEEP-OC-benchmarks_cnn
