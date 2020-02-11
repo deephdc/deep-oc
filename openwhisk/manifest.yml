@@ -1,107 +1,91 @@
----
 packages:
-    deep-oc:
+  deep-oc:
+    version: 1.0
+    description: DEEP-Hybrid-DataCloud Open Catalog package for OpenWhisk
+    license: Apache-2.0
+    repositories:
+    - url: https://github.com/deephdc/deep-oc
+      description: |
+        GitHub repository for the DEEP-Hybrid-DataCloud Open Catalog package.
+    actions:
+      list:
         version: 1.0
-        description: DEEP-Hybrid-DataCloud Open Catalog package for OpenWhisk
-        license: Apache-2.0
-        repositories:
-            -
-                url: "https://github.com/deephdc/deep-oc"
-                description: >
-                    GitHub repository for the DEEP-Hybrid-DataCloud Open
-                    Catalog package.
-        actions:
-            list:
-                version: 1.0
-                web: true
-                function: actions/list.py
-                runtime: python:3
-                description: >
-                    Action to list all defined modules in the DEEPaaS
-                    instance.
-                inputs:
-                    api_key:
-                        value: $OW_API_KEY
-                        type: string
-                        description: >
-                            OpenWhisk API auth key for the namespace where the
-                            DEEP-OC is being deployed.
-            swagger-links:
-                version: 1.0
-                function: actions/swagger-links.py
-                runtime: pyuthon:3
-                description: >
-                    Return an HTML list of swagger UI links with the
-                    correspondign swagger.json for each module.
-            update:
-                version: 1.0
-                web: true
-                function: actions/update.py
-                docker: deephdc/openwhisk-python3-wskdeploy:latest
-                description: >
-                    Action to list all defined modules in the DEEPaaS
-                    instance.
-                inputs:
-                    api_key:
-                        value: $OW_API_KEY
-                        type: string
-                        description: >
-                            OpenWhisk API auth key for the namespace where the
-                            DEEP-OC is being deployed.
-                    secret:
-                        value: $OW_SECRET
-                        type: string
-                        description: >
-                            Secret key to authenticate valid update requests.
-            dogs_breed_det:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-dogs_breed_det:cpu
-            mods:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-mods:cpu
-            image-classification-tf:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-image-classification-tf:cpu
-            plants-classification-tf:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-plants-classification-tf:cpu
-            conus-classification-tf:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-conus-classification-tf:cpu
-            phytoplankton-classification-tf:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-phytoplankton-classification-tf:cpu
-            seeds-classification-tf:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-seeds-classification-tf:cpu
-            satsr:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-satsr:cpu
-            speech-to-text-tf:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-speech-to-text-tf:cpu
-            posenet-tf:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-posenet-tf:cpu
-            audio-classification-tf:
-                version: 1.0
-                web: true
-                docker: deephdc/deep-oc-audio-classification-tf:cpu
-        sequences:
-            list-ui:
-                web: true
-                actions: list, swagger-links
+        web: true
+        function: actions/list.py
+        runtime: python:3
+        description: |
+          Action to list all defined modules in the DEEPaaS instance.
+        inputs:
+          api_key:
+            value: $OW_API_KEY
+            type: string
+            description: |
+              OpenWhisk API auth key for the namespace where the DEEP-OC is being deployed.
+      swagger-links:
+        version: 1.0
+        function: actions/swagger-links.py
+        runtime: pyuthon:3
+        description: |
+          Return an HTML list of swagger UI links with the correspondign swagger.json for each module.
+      update:
+        version: 1.0
+        web: true
+        function: actions/update.py
+        docker: deephdc/openwhisk-python3-wskdeploy:latest
+        description: |
+          Action to list all defined modules in the DEEPaaS instance.
+        inputs:
+          api_key:
+            value: $OW_API_KEY
+            type: string
+            description: |
+              OpenWhisk API auth key for the namespace where the DEEP-OC is being deployed.
+          secret:
+            value: $OW_SECRET
+            type: string
+            description: |
+              Secret key to authenticate valid update requests.
+      dogs_breed_det:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-dogs_breed_det:cpu
+      image-classification-tf:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-image-classification-tf:cpu
+      plants-classification-tf:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-plants-classification-tf:cpu
+      conus-classification-tf:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-conus-classification-tf:cpu
+      phytoplankton-classification-tf:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-phytoplankton-classification-tf:cpu
+      seeds-classification-tf:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-seeds-classification-tf:cpu
+      satsr:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-satsr:cpu
+      posenet-tf:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-posenet-tf:cpu
+      audio-classification-tf:
+        version: 1.0
+        web: true
+        docker: deephdc/deep-oc-audio-classification-tf:cpu
+    sequences:
+      list-ui:
+        web: true
+        actions: list, swagger-links
 project:
-    name: DEEP Open Catalogue
-    packages:
-        deep-oc:
+  name: DEEP Open Catalogue
+  packages:
+    deep-oc: null
