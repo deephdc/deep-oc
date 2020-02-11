@@ -139,7 +139,11 @@ boolean alignModules() {
     // Align OpenWhisk actions with MODULES.yml
     def modules_deep_map_keys_unprefixed = []
     modules_deep_map_keys.each {
-        modules_deep_map_keys_unprefixed.add(it.replaceFirst('DEEP-OC-', ''))
+        // Filter modules without keywords 'pre-trained' and 'api-v2' in the metadata
+        def app_metadata = readJSON file: it + '/metadata.json'
+        if (('pre-trained' in app_metadata.keywords) && ('api-v2' in app_metadata.keywords)) {
+            modules_deep_map_keys_unprefixed.add(it.replaceFirst('DEEP-OC-', ''))
+        }
     }
     
     def actions_openwhisk_del = []
