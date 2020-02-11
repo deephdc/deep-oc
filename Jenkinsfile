@@ -166,7 +166,7 @@ boolean alignModules() {
     writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data
     
     // Push changes
-    any_commit = modules_git_del || modules_git_update || modules_deep_add
+    any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
     if (any_commit) {
         sh 'git push origin HEAD:master'
     }
