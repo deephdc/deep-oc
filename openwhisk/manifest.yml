@@ -26,6 +26,13 @@ packages:
                         description: >
                             OpenWhisk API auth key for the namespace where the
                             DEEP-OC is being deployed.
+            swagger-links:
+                version: 1.0
+                function: actions/swagger-links.py
+                runtime: pyuthon:3
+                description: >
+                    Return an HTML list of swagger UI links with the
+                    correspondign swagger.json for each module.
             update:
                 version: 1.0
                 web: true
@@ -90,6 +97,10 @@ packages:
                 version: 1.0
                 web: true
                 docker: deephdc/deep-oc-audio-classification-tf:cpu
+        sequences:
+            list-ui:
+                web: true
+                actions: list, swagger-links
 project:
     name: DEEP Open Catalogue
     packages:
