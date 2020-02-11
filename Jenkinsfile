@@ -183,7 +183,7 @@ boolean alignModules() {
         openwhisk_data.packages['deep-oc']['actions'].put(it, [version:1.0, limits: [memorySize: 2048, timeout: 180000], web:true, docker: "deephdc/deep-oc-${it}:cpu"])
     }
  
-    writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data
+    writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data, overwrite: true
     
     // Push changes
     any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
