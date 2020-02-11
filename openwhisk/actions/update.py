@@ -42,7 +42,6 @@ def main(args):
             [
                 "git",
                 "clone",
-                "-b", "add_openwhisk_package",
                 "https://github.com/deephdc/deep-oc"
             ]
         )
