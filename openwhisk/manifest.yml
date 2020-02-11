@@ -8,6 +8,17 @@ packages:
            url: "https://github.com/deephdc/deep-oc"
            description: "GitHub repository for the DEEP-Hybrid-DataCloud Open Catalog package"
     actions:
+        list:
+            version: 1.0
+            web: yes
+            function: actions/list.py
+            runtime: python:3
+            description: "Action to list all defined modules in the DEEPaaS instance."
+            inputs:
+                api_key:
+                    value: $OW_API_KEY
+                    type: string
+                    description: "OpenWhisk API auth key for the namespace where the DEEP-OC is being deployed"
         dogs_breed_det:
             version: 1.0
             web: yes
