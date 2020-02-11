@@ -28,7 +28,11 @@ def do(args):
         "/api/v1/namespaces/%s/actions/" % ow_namespace
     )
 
-    ow_auth = args["api_key"]
+    ow_auth = args.get("api_key")
+    if not ow_auth:
+        return {
+            "error": "API key is not set."
+        }
 
     api_auth = tuple(ow_auth.split(":"))
 
@@ -55,7 +59,7 @@ def do(args):
             continue
 
         action_name = action["name"]
-        if action_name == "list_actions":
+        if action_name in ["list", "update"]:
             continue
 
         aux = action["namespace"].split("/", maxsplit=1)
