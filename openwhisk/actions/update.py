@@ -49,6 +49,7 @@ def main(args):
 
     tmp_env = os.environ.copy()
     tmp_env["OW_API_KEY"] = ow_auth
+    tmp_env["OW_SECRET"] = ow_secret
     p = subprocess.run(
         [
             "wskdeploy",
