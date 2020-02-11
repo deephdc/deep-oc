@@ -79,7 +79,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'openwhisk-token', variable: 'the_token')]) {
-                        the_url = "https://deepaas-test.deep-hybrid-datacloud.eu/api/v1/web/deepaas/deep-oc/update.text"
+                        the_url = "https://deepaas.deep-hybrid-datacloud.eu/api/v1/web/deepaas/deep-oc/update.text"
                         resp = sh(returnStdout: true, script: "curl -X POST \"${the_url}?auth=${the_token}\"")
                         println(resp)
                     }
