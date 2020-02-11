@@ -26,6 +26,26 @@ packages:
                         description: >
                             OpenWhisk API auth key for the namespace where the
                             DEEP-OC is being deployed.
+            update:
+                version: 1.0
+                web: true
+                function: actions/update.py
+                docker: deephdc/openwhisk-python3-wskdeploy:latest
+                description: >
+                    Action to list all defined modules in the DEEPaaS
+                    instance.
+                inputs:
+                    api_key:
+                        value: $OW_API_KEY
+                        type: string
+                        description: >
+                            OpenWhisk API auth key for the namespace where the
+                            DEEP-OC is being deployed.
+                    secret:
+                        value: $OW_SECRET
+                        type: string
+                        description: >
+                            Secret key to authenticate valid update requests.
             dogs_breed_det:
                 version: 1.0
                 web: true
