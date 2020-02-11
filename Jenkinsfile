@@ -135,9 +135,38 @@ boolean alignModules() {
         echo "There were errors adding modules. Setting the build status as UNSTABLE"
         currentBuild.result = 'UNSTABLE'
     }
+
+    // Align OpenWhisk actions with MODULES.yml
+    def modules_deep_map_keys_unprefixed = []
+    modules_deep_map_keys.each {
+        // Filter modules without keywords 'pre-trained' and 'api-v2' in the metadata
+        def app_metadata = readJSON file: it + '/metadata.json'
+        if (('pre-trained' in app_metadata.keywords) && ('api-v2' in app_metadata.keywords)) {
+            modules_deep_map_keys_unprefixed.add(it.replaceFirst('DEEP-OC-', ''))
+        }
+    }
+    
+    def actions_openwhisk_del = []
+    openwhisk_data = readYaml (file: 'openwhisk/manifest.yml')
+    openwhisk_data.packages['deep-oc']['actions'].each {
+        if ((!(it.key in modules_deep_map_keys_unprefixed)) && (!(it.key in ['list']))) {
+            actions_openwhisk_del.add(it.key)
+        }
+    }
+    actions_openwhisk_del.each {
+        openwhisk_data.packages['deep-oc']['actions'].remove(it)
+    }
+    
+    def actions_openwhisk_keys = openwhisk_data.packages['deep-oc']['actions'].keySet() as List
+    def actions_openwhisk_add = modules_deep_map_keys_unprefixed - actions_openwhisk_keys
+    actions_openwhisk_add.each {
+        openwhisk_data.packages['deep-oc']['actions'].put(it, [version:1.0, limits: [memorySize: 2048, timeout: 180000], web:true, docker: "deephdc/deep-oc-${it}:cpu"])
+    }
+ 
+    writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data
     
     // Push changes
-    any_commit = modules_git_del || modules_git_update || modules_deep_add
+    any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
     if (any_commit) {
         sh 'git push origin HEAD:master'
     }
