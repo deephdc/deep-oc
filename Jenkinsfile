@@ -156,6 +156,7 @@ boolean alignModules() {
     }
 
     // Align OpenWhisk actions with MODULES.yml
+    def openwhisk_actions_ignore = ['list', 'update', 'swagger-links']
     def modules_deep_map_keys_unprefixed = []
     modules_deep_map_keys.each {
         // Filter modules without keywords 'pre-trained' and 'api-v2' in the metadata
@@ -168,7 +169,7 @@ boolean alignModules() {
     def actions_openwhisk_del = []
     openwhisk_data = readYaml (file: 'openwhisk/manifest.yml')
     openwhisk_data.packages['deep-oc']['actions'].each {
-        if ((!(it.key in modules_deep_map_keys_unprefixed)) && (!(it.key in ['list']))) {
+        if ((!(it.key in modules_deep_map_keys_unprefixed)) && (!(it.key in openwhisk_actions_ignore))) {
             actions_openwhisk_del.add(it.key)
         }
     }
