@@ -14,15 +14,19 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import urllib.parse
 import os
+import urllib.parse
 
 import requests
+
 
 def do(args):
     ow_host = os.environ.get("__OW_API_HOST")
     ow_namespace = os.environ.get("__OW_NAMESPACE")
-    api_url = urllib.parse.urljoin(ow_host, "/api/v1/namespaces/%s/actions/" % ow_namespace)
+    api_url = urllib.parse.urljoin(
+        ow_host,
+        "/api/v1/namespaces/%s/actions/" % ow_namespace
+    )
 
     ow_auth = args["api_key"]
 
@@ -61,15 +65,38 @@ def do(args):
         else:
             action_package = "default"
 
-        action_url = urllib.parse.urljoin(ow_host, "{}/{}/{}/{}".format(web_url, action_namespace, action_package, action_name))
+        action_fragment = "{}/{}/{}/{}".format(web_url,
+                                               action_namespace,
+                                               action_package,
+                                               action_name)
+        action_url = urllib.parse.urljoin(ow_host,
+                                          action_fragment)
 
-        actions_json.append({"name": action_name, "href": action_url, "rel": "service"})
-        actions_html.append("<li><a href='{}' rel='service'>{}</a></li>".format(action_url, action_name))
+        d = {
+            "name": action_name,
+            "href": action_url,
+            "rel": "service"
+        }
+        actions_json.append(d)
+        html = "<li><a href='{}' rel='service'>{}</a></li>".format(action_url,
+                                                                   action_name)
+        actions_html.append(html)
 
+    actions_text = "\n".join(
+        [
+            "{}: {}".format(
+                a["name"],
+                a["href"]
+            ) for a in actions_json
+        ]
+    )
+    actions_html = "<html><body><ul>{}</ul></body></html>".format(
+        "".join(actions_html)
+    )
     return {
         "json": actions_json,
-        "text": "\n".join(["{}: {}".format(a["name"], a["href"]) for a in actions_json]),
-        "html": "<html><body><ul>{}</ul></body></html>".format("".join(actions_html)),
+        "text": actions_text,
+        "html": actions_html,
     }
 
 
