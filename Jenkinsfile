@@ -135,6 +135,33 @@ boolean alignModules() {
         echo "There were errors adding modules. Setting the build status as UNSTABLE"
         currentBuild.result = 'UNSTABLE'
     }
+
+    // Align OpenWhisk actions with MODULES.yml
+    def modules_deep_map_keys_unprefixed = []
+    modules_deep_map_keys.each {
+        modules_deep_map_keys_unprefixed.add(it.replaceFirst('DEEP-OC-', ''))
+    }
+    
+    def actions_openwhisk_del = []
+    openwhisk_data = readYaml (file: 'openwhisk/manifest.yml')
+    openwhisk_data.packages['deep-oc']['actions'].each {
+        if (!(it.key in modules_deep_map_keys_unprefixed)) {
+            actions_openwhisk_del.add(it.key)
+        }
+    }
+    actions_openwhisk_del.each {
+        openwhisk_data.packages['deep-oc']['actions'].remove(it)
+    }
+    
+    def actions_openwhisk_keys = openwhisk_data.packages['deep-oc']['actions'].keySet() as List
+    def actions_openwhisk_add = modules_deep_map_keys_unprefixed - actions_openwhisk_keys
+    actions_openwhisk_add.each {
+	// Check if keywords 'pre-trained' and 'api-v2' are present in the metadata
+
+        openwhisk_data.packages['deep-oc']['actions'].put(it, [version:1.0, limits: [memorySize: 2048, timeout: 180000], web:true, docker: "deephdc/deep-oc-${it}:cpu"])
+    }
+ 
+    writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data
     
     // Push changes
     any_commit = modules_git_del || modules_git_update || modules_deep_add
