@@ -59,7 +59,7 @@ def do(args):
             continue
 
         action_name = action["name"]
-        if action_name in ["list", "update"]:
+        if action_name in ["list", "update", "list-ui", "swagger-links"]:
             continue
 
         aux = action["namespace"].split("/", maxsplit=1)
