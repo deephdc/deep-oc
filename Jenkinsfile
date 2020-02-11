@@ -149,7 +149,7 @@ boolean alignModules() {
     def actions_openwhisk_del = []
     openwhisk_data = readYaml (file: 'openwhisk/manifest.yml')
     openwhisk_data.packages['deep-oc']['actions'].each {
-        if (!(it.key in modules_deep_map_keys_unprefixed)) {
+        if ((!(it.key in modules_deep_map_keys_unprefixed)) && (!(it.key in ['list']))) {
             actions_openwhisk_del.add(it.key)
         }
     }
