@@ -38,7 +38,8 @@ pipeline {
         
         stage('Align Git submodules with DEEP modules') {
             when {
-                branch 'master'
+                //branch 'master'
+                branch 'debug_openwhisk_yaml'
             }
             steps {
                 withCredentials([string(
@@ -71,7 +72,8 @@ pipeline {
         stage('Trigger update of DEEP applications through OpenWhisk') {
             when {
                 allOf {
-                    branch 'master'
+                    //branch 'master'
+                    branch 'debug_openwhisk_yaml'
                     expression { return deep_oc_build }
                     not { expression { return params.disable_oc_build } }
                 }
@@ -173,6 +175,7 @@ boolean alignModules() {
             actions_openwhisk_del.add(it.key)
         }
     }
+    echo ">>> OPENWHISK ACTIONS (to remove): $actions_openwhisk_del"
     actions_openwhisk_del.each {
         openwhisk_data.packages['deep-oc']['actions'].remove(it)
     }
@@ -182,8 +185,13 @@ boolean alignModules() {
     actions_openwhisk_add.each {
         openwhisk_data.packages['deep-oc']['actions'].put(it, [version:1.0, limits: [memorySize: 2048, timeout: 180000], web:true, docker: "deephdc/deep-oc-${it}:cpu"])
     }
+    echo ">>> OPENWHISK ACTIONS (to add): $actions_openwhisk_add"
+
+    echo ">>> OPENWHISK DATA: $openwhisk_data"
  
     writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data, overwrite: true
+    
+    sh 'git status'
     
     // Push changes
     any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
