@@ -10,11 +10,11 @@ def main(args):
             '<a href="/swagger/index.html?url={}/swagger.json" target="_blank">'
             'Swagger UI for "{}"'
             '</a>'
-#            ' | '
-#            '<a href="https://marketplace.deep-hybrid-datacloud.eu/modules/{}.html" target="_blank">'
-#            'Marketplace entry'
-#            '</a>'
-            '</li>'.format(m["href"], m["name"], m["name"])
+            ' | '
+            '<a href="https://marketplace.deep-hybrid-datacloud.eu/modules/deep-oc-{}.html" target="_blank">'
+            'Marketplace entry'
+            '</a>'
+            '</li>'.format(m["href"], m["name"], m["name"].replace("_", "-"))
         )
     ret.insert(0, "<ul>")
     ret.append("</ul>")
