@@ -72,7 +72,6 @@ pipeline {
             when {
                 allOf {
                     branch 'master'
-                    expression { return deep_oc_build }
                     not { expression { return params.disable_oc_build } }
                 }
             }
