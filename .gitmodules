@@ -43,3 +43,6 @@
 [submodule "DEEP-OC-benchmarks_cnn"]
 	path = DEEP-OC-benchmarks_cnn
 	url = https://github.com/deephdc/DEEP-OC-benchmarks_cnn
+[submodule "DEEP-OC-obj_detect_pytorch"]
+	path = DEEP-OC-obj_detect_pytorch
+	url = https://github.com/deephdc/DEEP-OC-obj_detect_pytorch
