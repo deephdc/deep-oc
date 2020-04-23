@@ -46,3 +46,6 @@
 [submodule "DEEP-OC-obj_detect_pytorch"]
 	path = DEEP-OC-obj_detect_pytorch
 	url = https://github.com/deephdc/DEEP-OC-obj_detect_pytorch
+[submodule "DEEP-OC-birds-audio-classification-tf"]
+	path = DEEP-OC-birds-audio-classification-tf
+	url = https://github.com/deephdc/DEEP-OC-birds-audio-classification-tf
