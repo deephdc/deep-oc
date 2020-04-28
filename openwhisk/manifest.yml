@@ -95,6 +95,13 @@ packages:
           timeout: 180000
         web: true
         docker: deephdc/deep-oc-birds-audio-classification-tf:cpu
+      retinopathy_test:
+        version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
+        web: true
+        docker: deephdc/deep-oc-retinopathy_test:cpu
     sequences:
       list-ui:
         web: true
