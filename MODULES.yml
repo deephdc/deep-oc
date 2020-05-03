@@ -16,3 +16,4 @@
 - module: https://github.com/deephdc/DEEP-OC-benchmarks_cnn
 - module: https://github.com/deephdc/DEEP-OC-obj_detect_pytorch
 - module: https://github.com/deephdc/DEEP-OC-birds-audio-classification-tf
+- module: https://github.com/deephdc/DEEP-OC-neural_transfer
