@@ -102,6 +102,13 @@ packages:
           timeout: 180000
         web: true
         docker: deephdc/deep-oc-retinopathy_test:cpu
+      neural_transfer:
+        version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
+        web: true
+        docker: deephdc/deep-oc-neural_transfer:cpu
     sequences:
       list-ui:
         web: true
