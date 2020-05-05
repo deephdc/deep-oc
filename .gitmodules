@@ -49,3 +49,6 @@
 [submodule "DEEP-OC-birds-audio-classification-tf"]
 	path = DEEP-OC-birds-audio-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-birds-audio-classification-tf
+[submodule "DEEP-OC-neural_transfer"]
+	path = DEEP-OC-neural_transfer
+	url = https://github.com/deephdc/DEEP-OC-neural_transfer
