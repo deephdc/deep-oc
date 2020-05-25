@@ -208,7 +208,6 @@ boolean alignModules2() {
     dicom_url = "https://github.com/deephdc/DEEP-OC-image-classification-tf-dicom"
     dicom_url_base_name = "DEEP-OC-image-classification-tf-dicom"
     
-    def app_metadata = readJSON file: dicom_url_base_name + '/metadata.json'
     openwhisk_data = readYaml (file: 'openwhisk/manifest.yml')
 
     any_commit = false
@@ -223,6 +222,7 @@ boolean alignModules2() {
         // else { update-submodules }
         
         // OPENWHISK
+        def app_metadata = readJSON file: dicom_url_base_name + '/metadata.json'
         if (('pre-trained' in app_metadata.keywords) && ('api-v2' in app_metadata.keywords)) {
             //echo ">>>>> ADD OPENWHISK ACTION <<<<<"
             if ( has_dicom_openwhisk == 1 ) {
