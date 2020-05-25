@@ -52,3 +52,6 @@
 [submodule "DEEP-OC-neural_transfer"]
 	path = DEEP-OC-neural_transfer
 	url = https://github.com/deephdc/DEEP-OC-neural_transfer
+[submodule "DEEP-OC-image-classification-tf-dicom"]
+	path = DEEP-OC-image-classification-tf-dicom
+	url = https://github.com/deephdc/DEEP-OC-image-classification-tf-dicom
