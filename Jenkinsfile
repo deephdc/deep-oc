@@ -35,10 +35,16 @@ pipeline {
                 ]
             }
         }
+        //stage('repository') {
+        //    steps {
+        //        sh 'cat .git/config'
+        //    }
+        //}
         
         stage('Align Git submodules with DEEP modules') {
             when {
-                branch 'master'
+                //branch 'master'
+                branch 'test-submodules-checkout'
             }
             steps {
                 withCredentials([string(
@@ -245,7 +251,8 @@ boolean alignModules2() {
         if (has_dicom_git == 0) {
             //echo ">>>>> REMOVE GIT SUBMODULE <<<<<"
             sh(script: "bash tools/remove-module.sh ${dicom_url_base_name}")
-            sh "git commit -m \"Remove ${dicom_url_base_name} submodule\""
+            sh "git status"
+            sh "git commit -a -m \"Remove ${dicom_url_base_name} submodule\""
             any_commit = true
         }
         
