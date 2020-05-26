@@ -251,6 +251,7 @@ boolean alignModules2() {
         if (has_dicom_openwhisk == 0) {
             //echo ">>>>> REMOVE OPENWHISK ACTION <<<<<"
             openwhisk_data.packages['deep-oc']['actions'].remove('image-classification-tf-dicom')
+            writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data, overwrite: true
             sh 'git commit -a -m "Removed OpenWhisk action deep-oc-image-classification-tf-dicom"'
             any_commit = true
         }
