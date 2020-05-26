@@ -251,14 +251,13 @@ boolean alignModules2() {
         if (has_dicom_git == 0) {
             //echo ">>>>> REMOVE GIT SUBMODULE <<<<<"
             sh(script: "bash tools/remove-module.sh ${dicom_url_base_name}")
-            sh "git status"
-            sh "git commit -a -m \"Remove ${dicom_url_base_name} submodule\""
             any_commit = true
         }
         
         if (has_dicom_openwhisk == 0) {
             //echo ">>>>> REMOVE OPENWHISK ACTION <<<<<"
             openwhisk_data.packages['deep-oc']['actions'].remove('image-classification-tf-dicom')
+    	    writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data, overwrite: true
             sh 'git commit -a -m "Removed OpenWhisk action deep-oc-image-classification-tf-dicom"'
             any_commit = true
         }
