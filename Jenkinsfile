@@ -47,8 +47,7 @@ pipeline {
                     sh 'git remote set-url origin "https://indigobot:${GITHUB_TOKEN}@github.com/deephdc/deep-oc"'
                     sh 'git config user.name "indigobot"'
                     sh 'git config user.email "<>"'
-                    //script { deep_oc_build = alignModules() }
-                    script { deep_oc_build = alignModules2() }
+                    script { deep_oc_build = alignModules() }
                 }
             }
         }
@@ -194,72 +193,6 @@ boolean alignModules() {
     // Push changes
     any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
     if (any_commit) {
-        sh 'git push origin HEAD:master'
-    }
-
-    return any_commit
-}
-
-boolean alignModules2() {
-	has_dicom_deep = sh(returnStatus: true, script: "grep dicom MODULES.yml")
-    has_dicom_git = sh(returnStatus: true, script: "git submodule | grep dicom")
-    has_dicom_openwhisk = sh(returnStatus: true, script: "grep dicom openwhisk/manifest.yml")
-    
-    dicom_url = "https://github.com/deephdc/DEEP-OC-image-classification-tf-dicom"
-    dicom_url_base_name = "DEEP-OC-image-classification-tf-dicom"
-    
-    openwhisk_data = readYaml (file: 'openwhisk/manifest.yml')
-
-    any_commit = false
-    if (has_dicom_deep == 0) {
-        //echo ">>>>>>>>>> HAS DICOM DEEP: ${has_dicom_deep}"
-        if (has_dicom_git == 1) {
-            //echo ">>>>> ADD GIT SUBMODULE <<<<<"
-            sh "git submodule add ${dicom_url}"
-            sh "git commit -m \"Add ${dicom_url_base_name} submodule\""
-            any_commit = true
-        }
-        // else { update-submodules }
-        
-        // OPENWHISK
-        def app_metadata = readJSON file: dicom_url_base_name + '/metadata.json'
-        if (('pre-trained' in app_metadata.keywords) && ('api-v2' in app_metadata.keywords)) {
-            //echo ">>>>> ADD OPENWHISK ACTION <<<<<"
-            if ( has_dicom_openwhisk == 1 ) {
-                openwhisk_data.packages['deep-oc']['actions'].put(
-                    'image-classification-tf-dicom', [
-                        version:1.0,
-                        limits: [memorySize: 2048, timeout: 180000],
-                        web:true,
-                        docker: "deephdc/deep-oc-image-classification-tf-dicom:cpu"
-                    ]
-                )
-                writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data, overwrite: true
-                sh('git diff openwhisk/manifest.yml')
-                sh 'git commit -a -m "Added OpenWhisk action deep-oc-image-classification-tf-dicom"'
-                any_commit = true
-            }
-        }
-    }
-    else {
-        if (has_dicom_git == 0) {
-            //echo ">>>>> REMOVE GIT SUBMODULE <<<<<"
-            sh(script: "bash tools/remove-module.sh ${dicom_url_base_name}")
-            any_commit = true
-        }
-        
-        if (has_dicom_openwhisk == 0) {
-            //echo ">>>>> REMOVE OPENWHISK ACTION <<<<<"
-            openwhisk_data.packages['deep-oc']['actions'].remove('image-classification-tf-dicom')
-            writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data, overwrite: true
-            sh 'git commit -a -m "Removed OpenWhisk action deep-oc-image-classification-tf-dicom"'
-            any_commit = true
-        }
-    }
-    sh 'git status'
-    
-    if (any_commit) {
-        echo 'Changes done: commiting to master'
         sh 'git push origin HEAD:master'
     }
 
