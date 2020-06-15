@@ -116,6 +116,13 @@ packages:
           timeout: 180000
         web: true
         docker: deephdc/deep-oc-image-classification-tf-dicom:cpu
+      semseg_vaihingen:
+        version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
+        web: true
+        docker: deephdc/deep-oc-semseg_vaihingen:cpu
     sequences:
       list-ui:
         web: true
