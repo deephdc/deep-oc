@@ -179,7 +179,8 @@ boolean alignModules() {
     
     def actions_openwhisk_keys = openwhisk_data.packages['deep-oc']['actions'].keySet() as List
     def actions_openwhisk_add = modules_deep_map_keys_unprefixed - actions_openwhisk_keys
-    actions_openwhisk_add.each {
+    def actions_openwhisk_add_overwrite = modules_deep_map_keys_unprefixed
+    actions_openwhisk_add_overwrite.each {
         openwhisk_data.packages['deep-oc']['actions'].put(it, [version:1.0, limits: [memorySize: 2048, timeout: 180000], web:true, docker: "deephdc/deep-oc-${it}:cpu"])
     }
     echo ">>> OPENWHISK ACTIONS (to add): $actions_openwhisk_add"
