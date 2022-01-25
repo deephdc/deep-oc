@@ -16,7 +16,7 @@ pipeline {
             description: 'Force-disable build of the DEEP marketplace'
         )
     }
-    
+
     stages {
         stage('Fetch repository') {
             steps {
@@ -35,17 +35,18 @@ pipeline {
                 ]
             }
         }
-        
+
         stage('Align Git submodules with DEEP modules') {
             when {
                 branch 'master'
             }
             steps {
-                withCredentials([string(
-                        credentialsId: "indigobot-github-token",
-                        variable: "GITHUB_TOKEN")]) {
-                    sh 'git remote set-url origin "https://indigobot:${GITHUB_TOKEN}@github.com/deephdc/deep-oc"'
-                    sh 'git config user.name "indigobot"'
+                withCredentials([usernamePassword(
+                        credentialsId: "deephdc-bot",
+                        usernameVariable: "GITHUB_USER",
+                        passwordVariable: "GITHUB_TOKEN")]) {
+                    sh 'git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/deephdc/deep-oc.git"'
+                    sh 'git config user.name "deephdc-bot"'
                     sh 'git config user.email "<>"'
                     script { deep_oc_build = alignModules() }
                 }
@@ -92,20 +93,20 @@ pipeline {
 /* methods */
 boolean alignModules() {
     def modules_deep_map = [:]
-    
-    // Get list of DEEP modules 
+
+    // Get list of DEEP modules
     data = readYaml (file: 'MODULES.yml')
     data.each{
         base_name = sh(returnStdout: true, script: "basename ${it.module}").trim()
         modules_deep_map.put(base_name, it.module)
     }
-    
+
     // Get list of git submodules
     def modules_git = sh(
         script: 'git submodule | awk \'{print $2}\'',
         returnStdout: true
     ).trim().split()
-    
+
     // Get the git submodules to remove
     def modules_deep_map_keys = modules_deep_map.keySet() as List
     def modules_git_del = []
@@ -115,7 +116,7 @@ boolean alignModules() {
         }
     }
     echo ">>> GIT SUBMODULES (to remove): $modules_git_del"
-    
+
     // Remove git submodules
     modules_git_del.each {
         sh(script: "bash tools/remove-module.sh ${it}")
@@ -128,7 +129,7 @@ boolean alignModules() {
     if (modules_git_update) {
     	sh 'git commit -a -m "Submodules updated"'
     }
-    
+
     // Add missing modules from MODULES.yml
     modules_deep_add = []
     any_add_failure = false
@@ -147,7 +148,7 @@ boolean alignModules() {
     if (modules_deep_add) {
         sh "git commit -m \"Submodule/s added: $modules_deep_add\""
     }
-    
+
     // Unstable build if there was any failure adding modules
     if (any_add_failure) {
         echo "There were errors adding modules. Setting the build status as UNSTABLE"
@@ -164,7 +165,7 @@ boolean alignModules() {
             modules_deep_map_keys_unprefixed.add(it.replaceFirst('DEEP-OC-', ''))
         }
     }
-    
+
     def actions_openwhisk_del = []
     openwhisk_data = readYaml (file: 'openwhisk/manifest.yml')
     openwhisk_data.packages['deep-oc']['actions'].each {
@@ -176,7 +177,7 @@ boolean alignModules() {
     actions_openwhisk_del.each {
         openwhisk_data.packages['deep-oc']['actions'].remove(it)
     }
-    
+
     def actions_openwhisk_keys = openwhisk_data.packages['deep-oc']['actions'].keySet() as List
     def actions_openwhisk_add = modules_deep_map_keys_unprefixed - actions_openwhisk_keys
     def actions_openwhisk_add_overwrite = modules_deep_map_keys_unprefixed
@@ -185,12 +186,12 @@ boolean alignModules() {
     }
     echo ">>> OPENWHISK ACTIONS (to add): $actions_openwhisk_add"
     echo ">>> OPENWHISK DATA: $openwhisk_data"
- 
+
     if ((actions_openwhisk_del) || (actions_openwhisk_add)) {
     	writeYaml file: 'openwhisk/manifest.yml', data: openwhisk_data, overwrite: true
     	sh 'git commit -a -m "OpenWhisk actions updated"'
     }
-    
+
     // Push changes
     any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
     if (any_commit) {
