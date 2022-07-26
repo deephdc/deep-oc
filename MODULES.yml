@@ -19,3 +19,4 @@
 - module: https://github.com/deephdc/DEEP-OC-neural_transfer
 - module: https://github.com/deephdc/DEEP-OC-image-classification-tf-dicom
 - module: https://github.com/deephdc/DEEP-OC-demo_app
+- module: https://github.com/adnaneds/DEEP-OC-unet
