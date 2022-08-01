@@ -58,3 +58,9 @@
 [submodule "DEEP-OC-demo_app"]
 	path = DEEP-OC-demo_app
 	url = https://github.com/deephdc/DEEP-OC-demo_app
+[submodule "DEEP-OC-unet"]
+	path = DEEP-OC-unet
+	url = https://github.com/adnaneds/DEEP-OC-unet
+[submodule "DEEP-OC-blossom"]
+	path = DEEP-OC-blossom
+	url = https://github.com/hereariim/DEEP-OC-blossom
