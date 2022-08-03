@@ -92,8 +92,6 @@ pipeline {
 
 /* methods */
 boolean alignModules() {
-    sh 'git --version'
-    
     def modules_deep_map = [:]
 
     // Get list of DEEP modules
@@ -102,6 +100,8 @@ boolean alignModules() {
         base_name = sh(returnStdout: true, script: "basename ${it.module}").trim()
         modules_deep_map.put(base_name, it.module)
     }
+    
+    sh 'rm -rf DEEP-OC*'
 
     // Get list of git submodules
     def modules_git = sh(
