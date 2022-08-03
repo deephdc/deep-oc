@@ -100,8 +100,6 @@ boolean alignModules() {
         base_name = sh(returnStdout: true, script: "basename ${it.module}").trim()
         modules_deep_map.put(base_name, it.module)
     }
-    
-    sh 'rm -rf DEEP-OC*'
 
     // Get list of git submodules
     def modules_git = sh(
@@ -126,7 +124,8 @@ boolean alignModules() {
 
     // Update git submodules to the last version
     sh 'git pull --recurse-submodules'
-    sh 'git submodule update --remote --recursive'
+    // FIXME: conflict between git versions (Jenkins, Docker image) DOES NOT ALLOW TO UPDATE git submodules
+    // sh 'git submodule update --remote --recursive'
     modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
     if (modules_git_update) {
     	sh 'git commit -a -m "Submodules updated"'
