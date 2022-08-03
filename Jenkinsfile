@@ -92,6 +92,8 @@ pipeline {
 
 /* methods */
 boolean alignModules() {
+    sh 'git --version'
+    
     def modules_deep_map = [:]
 
     // Get list of DEEP modules
@@ -124,7 +126,7 @@ boolean alignModules() {
 
     // Update git submodules to the last version
     sh 'git pull --recurse-submodules'
-    sh 'git submodule update --remote --recursive'
+    // sh 'git submodule update --remote --recursive'
     modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
     if (modules_git_update) {
     	sh 'git commit -a -m "Submodules updated"'
