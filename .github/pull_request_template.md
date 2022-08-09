@@ -50,6 +50,8 @@ would give the following forks:
 - https://github.com/deephdc/UC-adnaneds-unet
 - https://github.com/deephdc/UC-adnaneds-DEEP-OC-unet
 
+In case of doubt check the Jenkins badges in the respective `README`s of the repos (code and docker). They should display the expected repo names for `deephdc` forks.
+
 ### 3. Keep the forks updated
 
 In order to have the forks updated, so that they continously reflect the changes in upstream, we are going to use [Github Actions](https://github.com/features/actions).
