@@ -9,7 +9,7 @@ Please fill the following fields:
 * Docker repo: `https://github.com/<your-username>/DEEP-OC-<reponame>`
 
 The change to `MODULES.yml` should look like the following:
-> `- https://github.com/deephdc/UC-<your-username>-DEEP-OC-<reponame>`
+> `- module: https://github.com/deephdc/UC-<your-username>-DEEP-OC-<reponame>`
 
 Remember to select :ballot_box_with_check: `Allow edits by mantainers`
 
@@ -22,14 +22,14 @@ In the case the PR is from a **non-deephdc** member, remember you have to perfor
 
 Check the PR change follows the following convention (edit the PR is needed):
 
-> `- https://github.com/deephdc/UC-<original_account>-DEEP-OC-<original_repo_name>`
+> `- module: https://github.com/deephdc/UC-<original_account>-DEEP-OC-<original_repo_name>`
 
 Note: `UC` stands for _User Contributed_.
 So for example a user with Docker repo:
 - https://github.com/adnaneds/DEEP-OC-unet
 
 should have the following repo in `deephdc`:
-- https://github.com/deephdc/UC-adnaneds-DEEP-OC-unet ⬅ This is the line that should be included in the PR change to `MODULES.yml`
+- https://github.com/deephdc/UC-adnaneds-DEEP-OC-unet ⬅ This is the repo that should be included in the PR change to `MODULES.yml`
 
 ### 2. Fork creation
 
@@ -148,4 +148,4 @@ jobs:
           git fetch upstream --tags --quiet
           git push origin --tags --force
 
-```#
+```
