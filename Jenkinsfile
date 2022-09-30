@@ -101,8 +101,6 @@ boolean alignModules() {
         modules_deep_map.put(base_name, it.module)
     }
     
-    sh 'rm -rf DEEP-OC*'
-
     // Get list of git submodules
     def modules_git = sh(
         script: 'git submodule | awk \'{print $2}\'',
@@ -134,7 +132,7 @@ boolean alignModules() {
     //	sh 'git commit -a -m "Submodules updated"'
     //}
     
-    sh 'git submodule foreach git reset --hard origin/HEAD'
+    sh 'git submodule foreach "git fetch && git reset --hard origin/HEAD"'
 
     // Add missing modules from MODULES.yml
     modules_deep_add = []
