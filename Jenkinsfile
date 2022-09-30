@@ -128,15 +128,24 @@ boolean alignModules() {
 
     // Update git submodules to the last version
     sh 'git pull --recurse-submodules'
-    // sh 'git submodule foreach git config --get remote.origin.fetch'
-    // sh 'git submodule foreach git pull origin HEAD'
     sh 'git submodule update --remote --recursive'
     modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
     if (modules_git_update) {
     	sh 'git commit -a -m "Submodules updated"'
     }
     
-    // sh 'git submodule foreach "git fetch && git reset --hard origin/HEAD"'
+//     FIXME: The previous block of code breaks when a submodule has a 'main' branch instead of 'master'.
+//     Using:
+//         'git submodule foreach git pull origin HEAD'
+//     fixes the pulling stage but the error (master is missing) appears again at the update stage.
+//     One possibility would be to replace the whole block with:
+//         'git submodule foreach "git fetch && git reset --hard origin/HEAD"'
+//     and the last line of the Jenkinsfile with:
+//         any_commit = modules_git_del || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
+//     The problem is that module updates would not produce commits, thus the Marketplace rebuild would not be triggerred.
+//     This could be fixed triggering the Marketplace rebuild always, but I (Ignacio) leave the decision to the mantainer (Pablo),
+//     as those are already many changes.
+//     # As a temporary fix I added 'branch = main' to .gitmodules for problematic modules 
 
     // Add missing modules from MODULES.yml
     modules_deep_add = []
@@ -202,7 +211,6 @@ boolean alignModules() {
 
     // Push changes
     any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
-    // any_commit = modules_git_del || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
     if (any_commit) {
         sh 'git push origin HEAD:master'
     }
