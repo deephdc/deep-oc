@@ -61,6 +61,7 @@
 [submodule "UC-adnaneds-DEEP-OC-unet"]
 	path = UC-adnaneds-DEEP-OC-unet
 	url = https://github.com/deephdc/UC-adnaneds-DEEP-OC-unet
+	branch = main
 [submodule "UC-hereariim-DEEP-OC-blossom"]
 	path = UC-hereariim-DEEP-OC-blossom
 	url = https://github.com/deephdc/UC-hereariim-DEEP-OC-blossom
