@@ -125,9 +125,9 @@ boolean alignModules() {
     }
 
     // Update git submodules to the last version
-    sh 'git pull --recurse-submodules'
+    // sh 'git pull --recurse-submodules'
     // sh 'git submodule foreach git config --get remote.origin.fetch'
-    // sh 'git submodule foreach git pull'
+    sh 'git submodule foreach git pull origin HEAD'
     sh 'git submodule update --remote --recursive'
     modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
     if (modules_git_update) {
