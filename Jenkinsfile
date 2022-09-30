@@ -68,24 +68,28 @@ pipeline {
                 }
             }
         }
+        
+        
+// TODO: Uncomment this stage when ready - Now build fails because https://deepaas.deep-hybrid-datacloud.eu is down
+        
+//         stage('Trigger update of DEEP applications through OpenWhisk') {
+//             when {
+//                 allOf {
+//                     branch 'master'
+//                     not { expression { return params.disable_oc_build } }
+//                 }
+//             }
+//             steps {
+//                 script {
+//                     withCredentials([string(credentialsId: 'openwhisk-token', variable: 'the_token')]) {
+//                         the_url = "https://deepaas.deep-hybrid-datacloud.eu/api/v1/web/deepaas/deep-oc/update.text"
+//                         resp = sh(returnStdout: true, script: "curl -X POST \"${the_url}?auth=${the_token}\"")
+//                         println(resp)
+//                     }
+//                 }
+//             }
+//         }
 
-        stage('Trigger update of DEEP applications through OpenWhisk') {
-            when {
-                allOf {
-                    branch 'master'
-                    not { expression { return params.disable_oc_build } }
-                }
-            }
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'openwhisk-token', variable: 'the_token')]) {
-                        the_url = "https://deepaas.deep-hybrid-datacloud.eu/api/v1/web/deepaas/deep-oc/update.text"
-                        resp = sh(returnStdout: true, script: "curl -X POST \"${the_url}?auth=${the_token}\"")
-                        println(resp)
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -123,16 +127,16 @@ boolean alignModules() {
     }
 
     // Update git submodules to the last version
-    // sh 'git pull --recurse-submodules'
+    sh 'git pull --recurse-submodules'
     // sh 'git submodule foreach git config --get remote.origin.fetch'
     // sh 'git submodule foreach git pull origin HEAD'
-    // sh 'git submodule update --remote --recursive'
-    // modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
-    // if (modules_git_update) {
-    //	sh 'git commit -a -m "Submodules updated"'
-    //}
+    sh 'git submodule update --remote --recursive'
+    modules_git_update = sh(returnStdout: true, script: 'git status --porcelain=v1')
+    if (modules_git_update) {
+    	sh 'git commit -a -m "Submodules updated"'
+    }
     
-    sh 'git submodule foreach "git fetch && git reset --hard origin/HEAD"'
+    // sh 'git submodule foreach "git fetch && git reset --hard origin/HEAD"'
 
     // Add missing modules from MODULES.yml
     modules_deep_add = []
@@ -197,8 +201,8 @@ boolean alignModules() {
     }
 
     // Push changes
-    // any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
-    any_commit = modules_git_del || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
+    any_commit = modules_git_del || modules_git_update || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
+    // any_commit = modules_git_del || modules_deep_add || actions_openwhisk_del || actions_openwhisk_add
     if (any_commit) {
         sh 'git push origin HEAD:master'
     }
