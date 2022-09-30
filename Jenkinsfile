@@ -134,7 +134,7 @@ boolean alignModules() {
     //	sh 'git commit -a -m "Submodules updated"'
     //}
     
-    sh 'git submodule foreach "git fetch && git reset --hard origin/HEAD"'
+    sh 'git submodule foreach git reset --hard origin/HEAD'
 
     // Add missing modules from MODULES.yml
     modules_deep_add = []
