@@ -47,38 +47,65 @@ packages:
               Secret key to authenticate valid update requests.
       dogs_breed_det:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-dogs_breed_det:cpu
       image-classification-tf:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-image-classification-tf:cpu
       plants-classification-tf:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-plants-classification-tf:cpu
       conus-classification-tf:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-conus-classification-tf:cpu
       phytoplankton-classification-tf:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-phytoplankton-classification-tf:cpu
       seeds-classification-tf:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-seeds-classification-tf:cpu
       satsr:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-satsr:cpu
       posenet-tf:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-posenet-tf:cpu
       audio-classification-tf:
         version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
         web: true
         docker: deephdc/deep-oc-audio-classification-tf:cpu
       obj_detect_pytorch:
@@ -123,6 +150,13 @@ packages:
           timeout: 180000
         web: true
         docker: deephdc/deep-oc-semseg_vaihingen:cpu
+      UC-hereariim-blossom:
+        version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
+        web: true
+        docker: deephdc/deep-oc-UC-hereariim-blossom:cpu
     sequences:
       list-ui:
         web: true
