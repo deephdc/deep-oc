@@ -65,3 +65,6 @@
 [submodule "UC-hereariim-DEEP-OC-blossom"]
 	path = UC-hereariim-DEEP-OC-blossom
 	url = https://github.com/deephdc/UC-hereariim-DEEP-OC-blossom
+[submodule "UC-jmbIFR-DEEP-OC-marine_species_seg"]
+	path = UC-jmbIFR-DEEP-OC-marine_species_seg
+	url = https://github.com/deephdc/UC-jmbIFR-DEEP-OC-marine_species_seg
