@@ -21,3 +21,4 @@
 - module: https://github.com/deephdc/DEEP-OC-demo_app
 - module: https://github.com/deephdc/UC-adnaneds-DEEP-OC-unet
 - module: https://github.com/deephdc/UC-hereariim-DEEP-OC-blossom
+- module: https://github.com/deephdc/UC-jmbIFR-DEEP-OC-marine_species_seg
