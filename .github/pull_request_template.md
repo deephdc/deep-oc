@@ -3,15 +3,15 @@
 
 ## To PR author
 
-Please fill the following fields:
+* Please fill the following fields:
+  - Code repo: `https://github.com/<your-username>/<reponame>`
+  - Docker repo: `https://github.com/<your-username>/DEEP-OC-<reponame>`
+  - default git branch in your repos: `<branchname>` (default is usually `master` but some users use `main` for example) 
 
-* Code repo: `https://github.com/<your-username>/<reponame>`
-* Docker repo: `https://github.com/<your-username>/DEEP-OC-<reponame>`
-
-The change to `MODULES.yml` should look like the following:
+* The change to `MODULES.yml` should look like the following:
 > `- module: https://github.com/deephdc/UC-<your-username>-DEEP-OC-<reponame>`
 
-Remember to select :ballot_box_with_check: `Allow edits by mantainers`
+* Remember to select :ballot_box_with_check: `Allow edits by mantainers`
 
 
 ## To the PR reviewer
@@ -150,4 +150,15 @@ jobs:
           git fetch upstream --tags --quiet
           git push origin --tags --force
 
+```
+
+### 4. Update `<branchname>` in `.gitmodules`
+If the user has a default `<branchname>` different from `master` you should update the `.gitmodules` file in this repo to reflect this. You will have to wait after the PR is approved and the bot has added the module to the file.
+
+The change could look like this:
+```
+[submodule "..."]
+  path = ...
+	url = ...
+	branch = main
 ```
