@@ -71,3 +71,5 @@
 [submodule "DEEP-OC-federated-server"]
 	path = DEEP-OC-federated-server
 	url = https://github.com/deephdc/DEEP-OC-federated-server
+	branch = main
+
