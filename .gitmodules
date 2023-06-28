@@ -68,3 +68,6 @@
 [submodule "UC-jmbIFR-DEEP-OC-marine_species_seg"]
 	path = UC-jmbIFR-DEEP-OC-marine_species_seg
 	url = https://github.com/deephdc/UC-jmbIFR-DEEP-OC-marine_species_seg
+[submodule "DEEP-OC-federated-server"]
+	path = DEEP-OC-federated-server
+	url = https://github.com/deephdc/DEEP-OC-federated-server
