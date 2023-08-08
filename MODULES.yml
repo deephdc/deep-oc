@@ -22,3 +22,4 @@
 - module: https://github.com/deephdc/UC-adnaneds-DEEP-OC-unet
 - module: https://github.com/deephdc/UC-hereariim-DEEP-OC-blossom
 - module: https://github.com/deephdc/UC-jmbIFR-DEEP-OC-marine_species_seg
+- module: https://github.com/deephdc/UC-woutdecrop-DEEP-OC-phyto-plankton-classification
