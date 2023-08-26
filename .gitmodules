@@ -68,3 +68,6 @@
 [submodule "UC-jmbIFR-DEEP-OC-marine_species_seg"]
 	path = UC-jmbIFR-DEEP-OC-marine_species_seg
 	url = https://github.com/deephdc/UC-jmbIFR-DEEP-OC-marine_species_seg
+[submodule "DEEP-OC-fasterrcnn_pytorch_api"]
+	path = DEEP-OC-fasterrcnn_pytorch_api
+	url = https://github.com/deephdc/DEEP-OC-fasterrcnn_pytorch_api
