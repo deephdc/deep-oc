@@ -71,3 +71,6 @@
 [submodule "DEEP-OC-fasterrcnn_pytorch_api"]
 	path = DEEP-OC-fasterrcnn_pytorch_api
 	url = https://github.com/deephdc/DEEP-OC-fasterrcnn_pytorch_api
+[submodule "UC-woutdecrop-DEEP-OC-phyto-plankton-classification"]
+	path = UC-woutdecrop-DEEP-OC-phyto-plankton-classification
+	url = https://github.com/deephdc/UC-woutdecrop-DEEP-OC-phyto-plankton-classification
