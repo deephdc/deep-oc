@@ -157,6 +157,13 @@ packages:
           timeout: 180000
         web: true
         docker: deephdc/deep-oc-UC-hereariim-blossom:cpu
+      fasterrcnn_pytorch_api:
+        version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
+        web: true
+        docker: deephdc/deep-oc-fasterrcnn_pytorch_api:cpu
     sequences:
       list-ui:
         web: true

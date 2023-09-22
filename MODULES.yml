@@ -23,3 +23,4 @@
 - module: https://github.com/deephdc/UC-hereariim-DEEP-OC-blossom
 - module: https://github.com/deephdc/UC-jmbIFR-DEEP-OC-marine_species_seg
 - module: https://github.com/deephdc/UC-woutdecrop-DEEP-OC-phyto-plankton-classification
+- module: https://github.com/deephdc/DEEP-OC-fasterrcnn_pytorch_api
