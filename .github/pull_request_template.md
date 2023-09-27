@@ -157,13 +157,18 @@ jobs:
 
 ```
 
-### 4. Update `<branchname>` in `.gitmodules`
-If the user has a default `<branchname>` different from `master` you should update the `.gitmodules` file in this repo to reflect this. You will have to wait after the PR is approved and the bot has added the module to the file.
+### 4. Add the module as a git submodule
 
-The change could look like this:
+Clone the `deep-oc` repo and add the module:
+
+```console
+git submodule add https://github.com/deephdc/UC-<original_account>-DEEP-OC-<original_repo_name>
 ```
-[submodule "..."]
-  path = ...
-	url = ...
-	branch = main
+
+If the user has a default `<branchname>` different from `master` (eg. `main`), you should add this parameter in the submodule command:
+
+```console
+git submodule add -b <branchname> https://github.com/deephdc/UC-<original_account>-DEEP-OC-<original_repo_name>
 ```
+
+Then commit back and push the changes to the repo.
