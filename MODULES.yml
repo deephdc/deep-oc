@@ -24,3 +24,4 @@
 - module: https://github.com/deephdc/UC-jmbIFR-DEEP-OC-marine_species_seg
 - module: https://github.com/deephdc/UC-woutdecrop-DEEP-OC-phyto-plankton-classification
 - module: https://github.com/deephdc/DEEP-OC-fasterrcnn_pytorch_api
+- module: https://github.com/deephdc/DEEP-OC-yolov8_api
