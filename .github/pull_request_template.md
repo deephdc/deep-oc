@@ -11,6 +11,14 @@
 * The change to `MODULES.yml` should look like the following:
 > `- module: https://github.com/deephdc/UC-<your-username>-DEEP-OC-<reponame>`
 
+* If you module belongs to the [iMagine project](https://www.imagine-ai.eu/), please remember to include the tag `"vo.imagine-ai.eu"` in the `metadata.json`:
+```json
+    "keywords": [
+        ...,
+        "vo.imagine-ai.eu"
+    ],
+```
+
 * Remember to select :ballot_box_with_check: `Allow edits by mantainers`
 
 
