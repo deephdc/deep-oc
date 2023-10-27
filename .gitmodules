@@ -77,3 +77,7 @@
 [submodule "UC-emmaamblard-DEEP-OC-multi_plankton_separation"]
 	path = UC-emmaamblard-DEEP-OC-multi_plankton_separation
 	url = https://github.com/deephdc/UC-emmaamblard-DEEP-OC-multi_plankton_separation
+[submodule "UC-DFKI-NI-DEEP-OC-litter_assessment_service"]
+	path = UC-DFKI-NI-DEEP-OC-litter_assessment_service
+	url = https://github.com/deephdc/UC-DFKI-NI-DEEP-OC-litter_assessment_service
+	branch = main
