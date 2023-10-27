@@ -81,3 +81,7 @@
 	path = UC-DFKI-NI-DEEP-OC-litter_assessment_service
 	url = https://github.com/deephdc/UC-DFKI-NI-DEEP-OC-litter_assessment_service
 	branch = main
+[submodule "DEEP-OC-yolov8_api"]
+	path = DEEP-OC-yolov8_api
+	url = https://github.com/deephdc/DEEP-OC-yolov8_api
+	branch = main
