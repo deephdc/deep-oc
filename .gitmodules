@@ -74,3 +74,6 @@
 [submodule "UC-woutdecrop-DEEP-OC-phyto-plankton-classification"]
 	path = UC-woutdecrop-DEEP-OC-phyto-plankton-classification
 	url = https://github.com/deephdc/UC-woutdecrop-DEEP-OC-phyto-plankton-classification
+[submodule "UC-emmaamblard-DEEP-OC-multi_plankton_separation"]
+	path = UC-emmaamblard-DEEP-OC-multi_plankton_separation
+	url = https://github.com/deephdc/UC-emmaamblard-DEEP-OC-multi_plankton_separation
