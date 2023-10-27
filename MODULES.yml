@@ -26,3 +26,4 @@
 - module: https://github.com/deephdc/DEEP-OC-fasterrcnn_pytorch_api
 - module: https://github.com/deephdc/UC-emmaamblard-DEEP-OC-multi_plankton_separation
 - module: https://github.com/deephdc/UC-DFKI-NI-DEEP-OC-litter_assessment_service
+- module: https://github.com/deephdc/DEEP-OC-yolov8_api
