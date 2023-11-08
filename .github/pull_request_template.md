@@ -157,7 +157,7 @@ jobs:
           git tag -d $(git tag -l)
           git fetch upstream --tags --quiet
           git push origin --tags --force
-	  
+
        # Keep the workflow running
        # Github automatically disbales a workflow is the repo hasn't seen activity in the last 60 days.
        # This steps will make a dummy commit after 50 days of inactivity to avoid the disabling.
