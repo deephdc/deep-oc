@@ -27,4 +27,4 @@
 - module: https://github.com/deephdc/UC-emmaamblard-DEEP-OC-multi_plankton_separation
 - module: https://github.com/deephdc/UC-DFKI-NI-DEEP-OC-litter_assessment_service
 - module: https://github.com/deephdc/DEEP-OC-yolov8_api
-- module: https://github.com/MicroStep-MIS/DEEP-OC-ai4eosc_thunder_nowcast_ml
+- module: https://github.com/deephdc/UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml
