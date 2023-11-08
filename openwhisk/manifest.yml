@@ -164,6 +164,13 @@ packages:
           timeout: 180000
         web: true
         docker: deephdc/deep-oc-fasterrcnn_pytorch_api:cpu
+      yolov8_api:
+        version: 1.0
+        limits:
+          memorySize: 2048
+          timeout: 180000
+        web: true
+        docker: deephdc/deep-oc-yolov8_api:cpu
     sequences:
       list-ui:
         web: true
