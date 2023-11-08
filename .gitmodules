@@ -85,3 +85,6 @@
 	path = DEEP-OC-yolov8_api
 	url = https://github.com/deephdc/DEEP-OC-yolov8_api
 	branch = main
+[submodule "UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml"]
+	path = UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml
+	url = https://github.com/deephdc/UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml
