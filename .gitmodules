@@ -88,6 +88,6 @@
 [submodule "UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml"]
 	path = UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml
 	url = https://github.com/deephdc/UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml
-[submodule "UC-EnocMartinez-DEEP-OC-obsea_fish_detector"]
-	path = UC-EnocMartinez-DEEP-OC-obsea_fish_detector
-	url = https://github.com/deephdc/UC-EnocMartinez-DEEP-OC-obsea_fish_detector
+[submodule "UC-EnocMartinez-DEEP-OC-obsea-fish-detection"]
+	path = UC-EnocMartinez-DEEP-OC-obsea-fish-detection
+	url = https://github.com/deephdc/UC-EnocMartinez-DEEP-OC-obsea-fish-detection
