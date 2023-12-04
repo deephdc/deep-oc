@@ -28,4 +28,6 @@
 - module: https://github.com/deephdc/UC-DFKI-NI-DEEP-OC-litter_assessment_service
 - module: https://github.com/deephdc/DEEP-OC-yolov8_api
 - module: https://github.com/deephdc/UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml
+- module: https://github.com/deephdc/UC-lifewatch-DEEP-OC-phyto-plankton-classification
 - module: https://github.com/deephdc/UC-EnocMartinez-DEEP-OC-obsea-fish-detection
+
