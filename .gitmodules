@@ -91,3 +91,6 @@
 [submodule "UC-EnocMartinez-DEEP-OC-obsea-fish-detection"]
 	path = UC-EnocMartinez-DEEP-OC-obsea-fish-detection
 	url = https://github.com/deephdc/UC-EnocMartinez-DEEP-OC-obsea-fish-detection
+[submodule "UC-lifewatch-DEEP-OC-phyto-plankton-classification"]
+	path = UC-lifewatch-DEEP-OC-phyto-plankton-classification
+	url = https://github.com/deephdc/UC-lifewatch-DEEP-OC-phyto-plankton-classification
