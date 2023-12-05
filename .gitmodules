@@ -91,3 +91,6 @@
 [submodule "UC-lifewatch-DEEP-OC-phyto-plankton-classification"]
 	path = UC-lifewatch-DEEP-OC-phyto-plankton-classification
 	url = https://github.com/deephdc/UC-lifewatch-DEEP-OC-phyto-plankton-classification
+[submodule "UC-lifewatch-DEEP-OC-underwater-noise-classification"]
+	path = UC-lifewatch-DEEP-OC-underwater-noise-classification
+	url = https://github.com/deephdc/UC-lifewatch-DEEP-OC-underwater-noise-classification
