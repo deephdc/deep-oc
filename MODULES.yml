@@ -29,4 +29,4 @@
 - module: https://github.com/deephdc/UC-MicroStep-MIS-DEEP-OC-ai4eosc_thunder_nowcast_ml
 - module: https://github.com/deephdc/UC-lifewatch-DEEP-OC-phyto-plankton-classification
 - module: https://github.com/deephdc/UC-EnocMartinez-DEEP-OC-obsea-fish-detection
-
+- module: https://github.com/deephdc/UC-emvollmer-deep-oc-tbbrdet_api/

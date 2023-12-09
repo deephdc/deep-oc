@@ -91,3 +91,6 @@
 [submodule "UC-lifewatch-DEEP-OC-phyto-plankton-classification"]
 	path = UC-lifewatch-DEEP-OC-phyto-plankton-classification
 	url = https://github.com/deephdc/UC-lifewatch-DEEP-OC-phyto-plankton-classification
+[submodule "UC-emvollmer-deep-oc-tbbrdet_api"]
+	path = UC-emvollmer-deep-oc-tbbrdet_api
+	url = https://github.com/deephdc/UC-emvollmer-deep-oc-tbbrdet_api/
