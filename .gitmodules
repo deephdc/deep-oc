@@ -16,9 +16,6 @@
 [submodule "DEEP-OC-conus-classification-tf"]
 	path = DEEP-OC-conus-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-conus-classification-tf
-[submodule "DEEP-OC-phytoplankton-classification-tf"]
-	path = DEEP-OC-phytoplankton-classification-tf
-	url = https://github.com/deephdc/DEEP-OC-phytoplankton-classification-tf
 [submodule "DEEP-OC-seeds-classification-tf"]
 	path = DEEP-OC-seeds-classification-tf
 	url = https://github.com/deephdc/DEEP-OC-seeds-classification-tf

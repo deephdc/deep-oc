@@ -5,7 +5,6 @@
 - module: https://github.com/deephdc/DEEP-OC-image-classification-tf
 - module: https://github.com/deephdc/DEEP-OC-plants-classification-tf
 - module: https://github.com/deephdc/DEEP-OC-conus-classification-tf
-- module: https://github.com/deephdc/DEEP-OC-phytoplankton-classification-tf
 - module: https://github.com/deephdc/DEEP-OC-seeds-classification-tf
 - module: https://github.com/deephdc/DEEP-OC-satsr
 - module: https://github.com/deephdc/DEEP-OC-speech-to-text-tf
