@@ -97,3 +97,6 @@
 [submodule "UC-lifewatch-DEEP-OC-underwater-noise-classification"]
 	path = UC-lifewatch-DEEP-OC-underwater-noise-classification
 	url = https://github.com/deephdc/UC-lifewatch-DEEP-OC-underwater-noise-classification
+[submodule "UC-ai4eosc-psnc-DEEP-OC-integrated_plant_protection"]
+	path = UC-ai4eosc-psnc-DEEP-OC-integrated_plant_protection
+	url = https://github.com/deephdc/UC-ai4eosc-psnc-DEEP-OC-integrated_plant_protection
