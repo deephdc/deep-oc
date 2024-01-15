@@ -31,3 +31,4 @@
 - module: https://github.com/deephdc/UC-lifewatch-DEEP-OC-underwater-noise-classification
 - module: https://github.com/deephdc/UC-EnocMartinez-DEEP-OC-obsea-fish-detection
 - module: https://github.com/deephdc/UC-emvollmer-deep-oc-tbbrdet_api/
+- module: https://github.com/deephdc/UC-ai4eosc-psnc-DEEP-OC-integrated_plant_protection
