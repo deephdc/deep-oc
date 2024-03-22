@@ -97,7 +97,3 @@
 [submodule "UC-ai4eosc-psnc-DEEP-OC-integrated_plant_protection"]
 	path = UC-ai4eosc-psnc-DEEP-OC-integrated_plant_protection
 	url = https://github.com/deephdc/UC-ai4eosc-psnc-DEEP-OC-integrated_plant_protection
-[submodule "dogs_breed_det"]
-	path = dogs_breed_det
-	url = https://github.com/ai4os-hub/dogs_breed_det
-	branch = main
